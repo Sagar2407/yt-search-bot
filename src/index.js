@@ -6,6 +6,7 @@ import SearchBar from './components/search_bar';
 import VideoList from './components/video_list';
 import VideoDetail from './components/video_detail';
 const API_KEY = 'AIzaSyBruJfghas70-RQU2GKpuWwMUTbnHGDHm4';
+import {Panel} from 'react-bootstrap';
 
 class App extends Component{
 
@@ -14,7 +15,7 @@ class App extends Component{
         this.state = {videos: [],
         selectedVideo: null
         };
-        this.videoSearch('Hello World');
+        this.videoSearch('David Guetta');
     }
     videoSearch(term){
         YTSearch({key: API_KEY, term: term}, (videos)=>{
@@ -30,10 +31,14 @@ class App extends Component{
         return(
             <div>
             <SearchBar onSearchTermChange = {videoSearch}/>
+                <br/>
                 <VideoDetail video = {this.state.selectedVideo}/>
                 <VideoList
                     onVideoSelect={selectedVideo => this.setState({selectedVideo}) }
                     videos={this.state.videos}/>
+                <Panel>
+                    Copyright Sagar Singh 2017
+                </Panel>
             </div>
         );
     }

@@ -2,6 +2,7 @@
  * Created by Sagar Singh on 4/8/2017.
  */
 import React, {Component} from 'react';
+import { Media, Label } from 'react-bootstrap';
 
 const VideoDetail= ({video}) =>{
     if(!video){
@@ -16,9 +17,21 @@ const VideoDetail= ({video}) =>{
           <div className="embed-responsive embed-responsive-16by9">
               <iframe className="embed-responsive-item" src={url}></iframe>
           </div>
+          <br/>
           <div className="details">
-              <div>{video.snippet.title}</div>
-              <div>{video.snippet.description}</div>
+              <Media>
+                  <Media.Left>
+                      <img width={64} height={64} src= {video.snippet.thumbnails.default.url} alt="Image"/>
+                  </Media.Left>
+                  <Media.Body>
+                      <Media.Heading>{video.snippet.title}</Media.Heading>
+                      <Label bsStyle="danger">{video.snippet.channelTitle}</Label>&nbsp;
+                      <p>{video.snippet.description}</p>
+                  </Media.Body>
+              </Media>
+              {/*<div>{video.snippet.title}</div>*/}
+              {/*<div>{video.snippet.channelTitle}</div>*/}
+              {/*<div>{video.snippet.description}</div>*/}
           </div>
       </div>
   );
